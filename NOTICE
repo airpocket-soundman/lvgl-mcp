@@ -1,0 +1,26 @@
+lvgl-mcp
+Copyright (c) 2026 airpocket
+
+This project is licensed under the MIT License (see LICENSE), except for the
+third-party components listed below, which remain under their own licenses.
+
+Third-party components
+----------------------
+
+LVGL (Light and Versatile Graphics Library)
+  https://github.com/lvgl/lvgl
+  Licensed under the MIT License.
+  LVGL is downloaded and built by renderer/Dockerfile (tag v9.4.0); it is
+  not redistributed in this repository.
+
+lodepng (PNG encoder/decoder by Lode Vandevenne)
+  https://github.com/lvandeve/lodepng
+  Licensed under the zlib license.
+  Downloaded and compiled by renderer/Dockerfile at image build time; it is
+  not redistributed in this repository.
+
+Material Icons font data (renderer/fonts/material_icons.c)
+  https://fonts.google.com/icons
+  Licensed under the Apache License, Version 2.0.
+  The converted font data in renderer/fonts/material_icons.c is derived
+  from Google's Material Icons font.
