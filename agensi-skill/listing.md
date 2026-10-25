@@ -49,8 +49,8 @@ clients.
 
 ## Submission checklist
 
-- [ ] Author chooses a LICENSE for the repo (still a TODO in the README).
-- [ ] Replace `<public-repo-url>` placeholders (README + SKILL.md) with the
+- [x] License chosen: MIT (LICENSE + NOTICE added to the repo).
+- [x] Replace `<public-repo-url>` placeholders (README + SKILL.md) with the
       real URL of the new public repository.
 - [ ] Zip `agensi-skill/` (SKILL.md at the package root level expected by
       the marketplace) together with any reference files Agensi requires.
