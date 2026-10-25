@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  render-hello:
+    name: Build renderer image and render the hello example
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Build the renderer Docker image
+        run: docker build -t lvgl-renderer:v9 renderer/
+
+      - name: Render examples/ui_hello.c
+        run: |
+          mkdir -p render-output
+          cp examples/ui_hello.c render-output/ui.c
+          docker run --rm -v "$PWD/render-output":/work \
+            lvgl-renderer:v9 /work/ui.c /work/out.png 320 240
+
+      - name: Verify the PNG was produced
+        run: |
+          test -s render-output/out.png
+          file render-output/out.png
+          # PNG magic bytes: 89 50 4E 47
+          head -c 4 render-output/out.png | od -An -tx1 | grep -q '89 50 4e 47'
+
+      - name: Smoke-test the touch simulator
+        run: |
+          printf 'snapshot home\ntap 160 140\nsnapshot after_tap\n' > render-output/actions.txt
+          docker run --rm --entrypoint /opt/renderer/simulate.sh \
+            -v "$PWD/render-output":/work \
+            lvgl-renderer:v9 /work/ui.c /work/actions.txt 320 240
+          test -s render-output/home.png
+          test -s render-output/after_tap.png
+
+      - name: Upload rendered output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: render-output
+          path: render-output/*.png
+          if-no-files-found: ignore
+
+  python-syntax:
+    name: Check the MCP server compiles (syntax only)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: py_compile the MCP server
+        run: python -m py_compile mcp_server/server.py
