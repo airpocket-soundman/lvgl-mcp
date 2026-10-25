@@ -1,0 +1,13 @@
+# Optional alternative to `docker build` in setup.sh.
+#
+# Build the headless renderer image with:
+#   docker compose build renderer
+#
+# The MCP server itself is NOT run via compose — it is launched directly by
+# your MCP client over stdio (see .mcp.json.example) and calls the Docker
+# daemon for each render. This file only builds the renderer image.
+services:
+  renderer:
+    build:
+      context: ./renderer
+    image: lvgl-renderer:v9
