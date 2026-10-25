@@ -1,0 +1,31 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ---- MCP server / renderer generated output ----
+lvgl-work/
+out.png
+**/out.png
+*.frame.png
+render-output/
+
+# ---- Local MCP client config (the .example file is the template) ----
+.mcp.json
+
+# ---- Logs / temp ----
+*.log
+*.tmp
+
+# ---- Editor / IDE ----
+.vscode/
+.idea/
+*.code-workspace
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+desktop.ini
