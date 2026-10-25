@@ -28,7 +28,7 @@ The MCP server runs locally over stdio and needs a local Docker daemon.
 1. Clone the public repository (call it `$LVGL_MCP_HOME`):
 
    ```sh
-   git clone <public-repo-url> lvgl-mcp
+   git clone https://github.com/airpocket-soundman/lvgl-mcp.git lvgl-mcp
    cd lvgl-mcp
    ```
 
