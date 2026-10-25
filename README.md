@@ -159,9 +159,9 @@ the loop served from a dedicated home server over SSH. This repository is
 the generalized version of that workflow: same renderer, same tools, same
 feedback loop, but packaged to run entirely on your own machine.
 
-## License — TODO
+## License
 
-> **TODO (author):** choose a license for this project before publishing
-> (e.g. MIT / Apache-2.0) and add it as a `LICENSE` file here. No license
-> file is included yet, so no usage rights are granted by this repository
-> beyond what your local law provides.
+MIT License — see [LICENSE](LICENSE).
+
+Third-party components (LVGL, lodepng, and the Material Icons font data)
+remain under their own licenses; see [NOTICE](NOTICE).
